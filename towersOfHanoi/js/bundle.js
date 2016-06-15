@@ -139,48 +139,50 @@
 	function HanoiView(game, element) {
 	  this.game = game;
 	  this.element = element;
+	  this.clickedTower = undefined;
 	  this.setupTowers();
-	  this.render();
-	  this.clickedTower = null;
 	}
 	
 	HanoiView.prototype.setupTowers = function () {
-	  this.game.towers.forEach( (tower, i) => {
-	    const $tower = $("<ul>").addClass("tower").attr("data-pos", i).text(`Tower ${i}`);
-	    tower.forEach(disk => {
-	      let $disk = $("<li>").addClass("disk").attr("data-size", disk).text(`Disk ${disk}`);
-	      $tower.append($disk);
-	    });
-	    this.element.append($tower);
-	  });
-	
+	  this.render();
 	};
 	
 	HanoiView.prototype.render = function () {
-	  // this.element.append(this.game);
-	  // $("ul").on("click", event => {
-	  //
-	  // })
+	  $("ul").remove();
+	
+	  this.game.towers.forEach( (tower, i) => {
+	    const $tower = $("<ul>").addClass("tower").attr("data-pos", i);
+	    tower.forEach(disk => {
+	      let $disk = $("<li>").addClass(`disk disk${disk}`)
+	          .attr("data-size", disk);
+	      $tower.append($disk);
+	    });
+	    this.element.append($tower);
+	    $tower.on("click", this.clickTower.bind(this));
+	  });
 	};
 	
 	HanoiView.prototype.clickTower = function(event) {
 	  const $tower = $(event.currentTarget);
-	  const pos = getPos($tower);
+	  let pos = $tower.data("pos");
+	  console.log(typeof this.clickedTower);
 	
-	  if (this.clickedTower) {
-	    this.game.move(getPos(this.clickedTower), pos);
+	  if (typeof this.clickedTower !== "undefined") {
+	    if (!this.game.isValidMove(this.clickedTower.data("pos"), pos)) {
+	      alert("Invalid Move! Try again.");
+	    }
+	    this.game.move(this.clickedTower.data("pos"), pos);
 	    this.clickedTower.removeClass("clicked");
-	    this.clickedTower = null;
+	    this.clickedTower = undefined;
+	    this.render();
+	    if (this.game.isWon()) {
+	      alert("Congratulations, you're a winner!!!");
+	    }
 	  } else {
 	    this.clickedTower = $tower;
 	    $tower.addClass("clicked");
 	  }
 	};
-	
-	let getPos = function(tower) {
-	  tower.data("pos").map(el => parseInt(el));
-	};
-	
 	
 	module.exports = HanoiView;
 

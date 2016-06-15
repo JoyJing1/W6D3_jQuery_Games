@@ -1,7 +1,7 @@
 module.exports = {
   entry: "./js/main.js",
   output: {
-    path: "./",/* where `index.html` can find your bundle */
+    path: "./js",/* where `index.html` can find your bundle */
     filename: "bundle.js"/* your `bundle` */
   },
   devtool: "source-map",
