@@ -1,0 +1,41 @@
+ul {
+  padding-left: 0;
+  width: 450px;
+  height: 450px;
+  margin: 0 auto;
+  border: 5px solid #228b22;
+  box-shadow: 3px 3px #135710;
+}
+
+li {
+  list-style: none;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.snake-body {
+  background: #3BB873;
+}
+
+.apple {
+  /*background: red;*/
+  background: url("http://www.pngpix.com/wp-content/uploads/2016/03/Apple-PNG-Image.png");
+  background-size: contain;
+}
+
+h1 {
+  display: block;
+  text-align: center;
+  font-family: cursive;
+  font-size: 70px;
+  margin: 0 auto;
+  color: #44ED3B;
+}
+
+body {
+  vertical-align: middle;
+  background-image: url("http://payload24.cargocollective.com/1/6/200757/2789050/forest_floor_004_2000.jpg");
+  background-size: cover;
+}

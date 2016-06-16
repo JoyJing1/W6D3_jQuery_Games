@@ -1,6 +1,6 @@
 function Game () {
   this.towers = [[3, 2, 1], [], []];
-};
+}
 
 Game.prototype.isValidMove = function(startTowerIdx, endTowerIdx) {
     const startTower = this.towers[startTowerIdx];
@@ -8,7 +8,7 @@ Game.prototype.isValidMove = function(startTowerIdx, endTowerIdx) {
 
     if (startTower.length === 0) {
       return false;
-    } else if (endTower.length == 0) {
+    } else if (endTower.length === 0) {
       return true;
     } else {
       const topStartDisc = startTower[startTower.length - 1];
@@ -19,9 +19,8 @@ Game.prototype.isValidMove = function(startTowerIdx, endTowerIdx) {
 
 Game.prototype.isWon = function(){
     // move all the discs to the last or second tower
-    return (this.towers[2].length == 3) || (this.towers[1].length == 3);
+    return (this.towers[2].length === 3) || (this.towers[1].length === 3);
 };
-
 
 Game.prototype.move = function(startTowerIdx, endTowerIdx) {
     if (this.isValidMove(startTowerIdx, endTowerIdx)) {
@@ -32,11 +31,9 @@ Game.prototype.move = function(startTowerIdx, endTowerIdx) {
     }
 };
 
-
 Game.prototype.print = function(){
     console.log(JSON.stringify(this.towers));
 };
-
 
 Game.prototype.promptMove = function(reader, callback) {
     this.print();
@@ -44,7 +41,7 @@ Game.prototype.promptMove = function(reader, callback) {
       const startTowerIdx = parseInt(start);
       reader.question("Enter an ending tower: ", end => {
         const endTowerIdx = parseInt(end);
-        callback(startTowerIdx, endTowerIdx)
+        callback(startTowerIdx, endTowerIdx);
       });
     });
 };

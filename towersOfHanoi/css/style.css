@@ -65,3 +65,8 @@ h1 {
   font-size: 100px;
   color: #ECFFFB
 }
+
+body {
+  background-image: url("http://www.fronne.com/wp-content/uploads/2015/09/pyramids-of-egypt.jpg");
+  background-size: cover;
+}
