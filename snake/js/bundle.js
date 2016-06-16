@@ -71,8 +71,8 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const Board = __webpack_require__(4);
-	const Coord = __webpack_require__(3);
+	const Board = __webpack_require__(3);
+	const Coord = __webpack_require__(5);
 	
 	function SnakeView (game, $el) {
 	  this.board = new Board();
@@ -142,39 +142,10 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
-
-	function Coord(x, y) {
-	  this.x = x;
-	  this.y = y;
-	}
-	
-	Coord.DIRS = {"N": new Coord(-1, 0),
-	              "E": new Coord(0, 1),
-	              "S": new Coord(1, 0),
-	              "W": new Coord(0, -1)};
-	
-	Coord.prototype.plus = function (dir) {
-	  return new Coord(this.x + dir.x, this.y + dir.y);
-	};
-	
-	Coord.prototype.equals = function (otherPos) {
-	  return (this.x === otherPos.x && this.y === otherPos.y);
-	};
-	
-	Coord.prototype.isOpposite = function (newDir) {
-	  return this.x + newDir.x === 0 && this.y + newDir.y === 0;
-	};
-	
-	module.exports = Coord;
-
-
-/***/ },
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const Snake = __webpack_require__(5);
-	const Coord = __webpack_require__(3);
+	const Snake = __webpack_require__(4);
+	const Coord = __webpack_require__(5);
 	
 	function Board () {
 	  this.snake = new Snake(new Coord(0, 1));
@@ -201,10 +172,10 @@
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const Coord = __webpack_require__(3);
+	const Coord = __webpack_require__(5);
 	
 	function Snake(direction) {
 	  this.direction = direction;
@@ -246,6 +217,35 @@
 	};
 	
 	module.exports = Snake;
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	function Coord(x, y) {
+	  this.x = x;
+	  this.y = y;
+	}
+	
+	Coord.DIRS = {"N": new Coord(-1, 0),
+	              "E": new Coord(0, 1),
+	              "S": new Coord(1, 0),
+	              "W": new Coord(0, -1)};
+	
+	Coord.prototype.plus = function (dir) {
+	  return new Coord(this.x + dir.x, this.y + dir.y);
+	};
+	
+	Coord.prototype.equals = function (otherPos) {
+	  return (this.x === otherPos.x && this.y === otherPos.y);
+	};
+	
+	Coord.prototype.isOpposite = function (newDir) {
+	  return this.x + newDir.x === 0 && this.y + newDir.y === 0;
+	};
+	
+	module.exports = Coord;
 
 
 /***/ }
