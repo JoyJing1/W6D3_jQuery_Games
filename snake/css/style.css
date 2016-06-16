@@ -15,14 +15,14 @@ li {
   margin: 0 auto;
 }
 
-.snake-body {
-  background: #3BB873;
-}
-
 .apple {
   /*background: red;*/
   background: url("http://www.pngpix.com/wp-content/uploads/2016/03/Apple-PNG-Image.png");
   background-size: contain;
+}
+
+.snake-body {
+  background: #3BB873;
 }
 
 h1 {
